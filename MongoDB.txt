@@ -1,0 +1,96 @@
+﻿
+show all databases
+   show dbs
+
+
+create a database
+   use {dbname}
+
+
+
+create collection
+   db.createCollection('users')
+
+
+show all collections
+   show collections
+
+
+
+create document
+   db.users.insertOne({
+      name : 'reza'
+      age    :  27
+   })
+
+
+
+
+read documents in users collection 
+    db.users.find()
+
+
+
+
+delete collection
+   db.users.drop()
+
+
+
+delete  document
+   db.users.deleteOne({name : 'ali'})
+   db.users.deleteMany({name : 'ali'})
+
+
+
+read single document
+   db.users.findOne({name : 'ali'})
+
+
+
+read document where age > 30
+    db.users.find({age : {$gt:30} })
+
+
+
+
+update document
+   db.users.updateOne(
+        {name:'ali'},
+        {$set :  {age : 30} },
+   )
+
+
+
+
+count of documents
+   db.users.find().count()
+
+
+limit in query
+   db.users.find().limit()
+
+
+sort in query
+   db.users.find().sort({ age : 1 })
+   db.users.find().sort({ age : -1 })
+
+
+
+
+
+index field
+   db.users.createIndex({name:1})
+
+
+
+
+
+backup
+   mongodump -d {dbname}
+
+restore
+   mongorestore
+
+
+
